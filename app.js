@@ -4,6 +4,13 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+
+//tells app to look for file .env, then read file 
+//we git ignored it because heroku doesn't need it 
+require('dotenv').config();
+mongoose.connect(process.env.MONGODB_URI); 
+
 
 var index = require('./routes/index');
 var users = require('./routes/users');
